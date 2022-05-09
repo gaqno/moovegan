@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Button } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
+import { TextInput } from 'react-native-gesture-handler';
 
 const Login =( props: any) => {
   const logoPosition = useSharedValue(0);
@@ -34,6 +35,27 @@ const Login =( props: any) => {
           <View style={styles.form}>
               <Text style={styles.titleText}> Vamos começar! </Text>
               <Text> Faça seu login para ter acesso ao conteúdo. </Text>
+              <TextInput 
+              style={styles.input}
+              // onChangeText={}
+              // value={}
+              placeholder="Email ou usuário"/>
+              <TextInput 
+              style={styles.input}
+              // onChangeText={}
+              // value={}
+              placeholder="Senha"/>
+              <Text style={
+                { 
+                marginLeft: '58vw',
+                color: '#035B44', 
+                fontSize: 12,
+                marginBottom: 10,
+                alignContent: 'flex-end'
+                }}> 
+                 Esqueceu a senha? 
+              </Text>
+              <Button color="#02613F" title='Entrar' onPress={() => console.log('u press me! :)')}/>
           </View>
         </Animated.View>
       </View>
@@ -68,12 +90,26 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontFamily: 'Poppins_700Bold',
-    fontSize: 22
+    fontSize: 22,
+    paddingBottom: 10
   },
   baseText: {
     fontSize: 20,
     fontFamily: 'Poppins_400Regular',
     fontWeight: "bold"
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    borderColor: '#1F9268'
+  },
+  buttom: {
+    width: '20vw',
+    backgroundColor: '#02613F',
+    borderRadius: 15
   }
 })
 
