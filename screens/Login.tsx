@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Image, StyleSheet, Text, View, Button } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import AppLoading from 'expo-app-loading';
+import { Image, StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import { TextInput } from 'react-native-gesture-handler';
+import AppLoading from 'expo-app-loading';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-const Login =( props: any) => {
+const Login = ( props: any ) => {
   const logoPosition = useSharedValue(0);
   const loginPosition = useSharedValue(400)
   const logoStyle = useAnimatedStyle(() => {
@@ -45,14 +44,7 @@ const Login =( props: any) => {
               // onChangeText={}
               // value={}
               placeholder="Senha"/>
-              <Text style={
-                { 
-                marginLeft: '58vw',
-                color: '#035B44', 
-                fontSize: 12,
-                marginBottom: 10,
-                alignContent: 'flex-end'
-                }}> 
+              <Text style={styles.forgetPassword}> 
                  Esqueceu a senha? 
               </Text>
               <Button color="#02613F" title='Entrar' onPress={() => console.log('u press me! :)')}/>
@@ -106,10 +98,17 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#1F9268'
   },
-  buttom: {
-    width: '20vw',
+  button: {
+    width: 50,
     backgroundColor: '#02613F',
     borderRadius: 15
+  },
+  forgetPassword: {
+    marginLeft: 225,
+    color: '#02613F',
+    fontSize: 12,
+    marginBottom: 10,
+    alignContent: 'flex-end'
   }
 })
 
