@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Image, StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { Image, StyleSheet, Text, View, TextInput } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { FontAwesome } from '@expo/vector-icons'; 
+import StyledButton from '../UI/StyledButton';
+import StyledText from '../UI/StyledText';
 
-const Login = ( props: any ) => {
+const Login = ( { navigation } ) => {
   const logoPosition = useSharedValue(0);
   const loginPosition = useSharedValue(400)
   const logoStyle = useAnimatedStyle(() => {
@@ -32,8 +35,8 @@ const Login = ( props: any ) => {
         <Animated.Image source={require('../assets/logo.png')} style={[styles.logo, logoStyle]} />
         <Animated.View style={[styles.formSection, loginStyle]}>
           <View style={styles.form}>
-              <Text style={styles.titleText}> Vamos começar! </Text>
-              <Text> Faça seu login para ter acesso ao conteúdo. </Text>
+              <StyledText title='Vamos começar!' type='title' fontSize={24} marginLeft={0}/>
+              <StyledText title='Faça seu login para ter acesso ao conteúdo.' type='subtitle' fontSize={12}/>
               <TextInput 
               style={styles.input}
               // onChangeText={}
@@ -47,8 +50,17 @@ const Login = ( props: any ) => {
               <Text style={styles.forgetPassword}> 
                  Esqueceu a senha? 
               </Text>
-              <Button color="#02613F" title='Entrar' onPress={() => console.log('u press me! :)')}/>
-          </View>
+              <StyledButton title="ENTRAR" onPress={() => navigation.navigate('Home')} backgroundColor="#075E47" />
+              <StyledText title='ou continue com:' type='subtitle' fontSize={15} marginLeft={110}/>
+                <View style={{ flexDirection: 'row', marginBottom: 10, justifyContent: 'space-evenly', marginHorizontal: 100}}>
+                  <FontAwesome name="facebook" color='blue' size={25} />
+                  <FontAwesome name="google" color='orange' size={25} />
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                  <StyledText title='Não tem uma conta?' type='subtitle' fontSize={10} marginLeft={80}/>
+                  <StyledText title='Registre-se agora' type='subtitle' fontSize={10} marginLeft={5} color='#EA7B7B'/>
+                </View>
+            </View>
         </Animated.View>
       </View>
     )
@@ -67,7 +79,7 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 30,
     borderTopLeftRadius: 30,
     width: 390,
-    height: 400,
+    height: 450,
     marginBottom: -300,
     
   },
@@ -92,19 +104,14 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    margin: 12,
+    padding: 10,
+    marginTop: 15,
     borderWidth: 1,
     borderRadius: 5,
-    padding: 10,
     borderColor: '#1F9268'
   },
-  button: {
-    width: 50,
-    backgroundColor: '#02613F',
-    borderRadius: 15
-  },
   forgetPassword: {
-    marginLeft: 225,
+    marginLeft: 235,
     color: '#02613F',
     fontSize: 12,
     marginBottom: 10,
