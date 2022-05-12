@@ -7,8 +7,7 @@ import Home from "./screens/Home";
 
 // create a "stack"
 const MyStack = createNativeStackNavigator();
-
-const App = () => {
+const Routes = () => {
   return (
     <NavigationContainer>
       <MyStack.Navigator>
@@ -20,10 +19,11 @@ const App = () => {
         <MyStack.Screen 
         name="Home" 
         component={Home} 
+        options={{ headerShown: false }} 
         />
       </MyStack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default App;
+export default Routes;

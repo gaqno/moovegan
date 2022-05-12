@@ -1,20 +1,14 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import Header from '../UI/Header';
+import Dashboard from '../UI/Dashboard';
 
-const Home = (props: any) => {
+const Home = ({ navigation }) => {
+
   return (
-    <View style={styles.screen}>
-      <Text>Home</Text>
-    </View>
+    <>
+        <Header title='Olá, Usuário'/>
+        <Dashboard />
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
-export default Home;
+export default Home;    

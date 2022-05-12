@@ -4,20 +4,23 @@ import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-font
 
 export default function StyledText( 
   props: { 
-    title?: string;
-    type: 'title' | 'subtitle';
-    marginLeft?: number ;
-    fontSize: number ; 
-    color?: any;
+    text?: any;
+    type?: 'title' | 'subtitle';
+    marginHorizontal?: number ;
+    marginVertical?: number ;
+    fontSize?: number ; 
+    color?: any | undefined;
   }) {
       
-  const { title, type, fontSize, marginLeft, color } = props;
+  const { text, type, fontSize, marginHorizontal, marginVertical, color } = props;
   
   if (props.type === 'title') {
     let [fontsLoaded] = useFonts({
       Poppins_400Regular})
     return (
-      <Text style={[styles.title, {fontSize}, {marginLeft}, {color}]}>{title}</Text> 
+      <>
+        <Text style={[styles.title, {fontSize}, {marginHorizontal}, {color}, {marginVertical}]}>{text}</Text> 
+      </>
     )
   }
   if (props.type === 'subtitle') {
@@ -25,9 +28,9 @@ export default function StyledText(
       Poppins_700Bold
     })
     return (
-      <View>
-        <Text style={[styles.subtitle, {fontSize}, {marginLeft}, {color}]}>{title}</Text> 
-      </View>
+      <>
+        <Text style={[styles.subtitle, {fontSize}, {marginHorizontal}, {color}, {marginVertical}]}>{text}</Text> 
+      </>
     )
   }
 }

@@ -6,6 +6,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 import { FontAwesome } from '@expo/vector-icons'; 
 import StyledButton from '../UI/StyledButton';
 import StyledText from '../UI/StyledText';
+import { StatusBar } from 'expo-status-bar';
 
 const Login = ( { navigation } ) => {
   const logoPosition = useSharedValue(0);
@@ -32,11 +33,12 @@ const Login = ( { navigation } ) => {
 
     return (
       <View style={styles.container}>
+      <StatusBar hidden={false} />
         <Animated.Image source={require('../assets/logo.png')} style={[styles.logo, logoStyle]} />
         <Animated.View style={[styles.formSection, loginStyle]}>
           <View style={styles.form}>
-              <StyledText title='Vamos começar!' type='title' fontSize={24} marginLeft={0}/>
-              <StyledText title='Faça seu login para ter acesso ao conteúdo.' type='subtitle' fontSize={12}/>
+              <StyledText text='Vamos começar!' type='title' fontSize={24} marginLeft={0}/>
+              <StyledText text='Faça seu login para ter acesso ao conteúdo.' type='subtitle' fontSize={12}/>
               <TextInput 
               style={styles.input}
               // onChangeText={}
@@ -51,14 +53,14 @@ const Login = ( { navigation } ) => {
                  Esqueceu a senha? 
               </Text>
               <StyledButton title="ENTRAR" onPress={() => navigation.navigate('Home')} backgroundColor="#075E47" />
-              <StyledText title='ou continue com:' type='subtitle' fontSize={15} marginLeft={110}/>
+              <StyledText text='ou continue com:' type='subtitle' fontSize={15} marginLeft={110}/>
                 <View style={{ flexDirection: 'row', marginBottom: 10, justifyContent: 'space-evenly', marginHorizontal: 100}}>
-                  <FontAwesome name="facebook" color='blue' size={25} />
-                  <FontAwesome name="google" color='orange' size={25} />
+                  <FontAwesome name="facebook" color='#075E47' size={25} />
+                  <FontAwesome name="google" color='#075E47' size={25} />
                 </View>
                 <View style={{flexDirection: 'row'}}>
-                  <StyledText title='Não tem uma conta?' type='subtitle' fontSize={10} marginLeft={80}/>
-                  <StyledText title='Registre-se agora' type='subtitle' fontSize={10} marginLeft={5} color='#EA7B7B'/>
+                  <StyledText text='Não tem uma conta?' type='subtitle' fontSize={10} marginLeft={80}/>
+                  <StyledText text='Registre-se agora' type='subtitle' fontSize={10} marginLeft={5} color='#EA7B7B'/>
                 </View>
             </View>
         </Animated.View>
