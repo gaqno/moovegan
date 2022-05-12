@@ -20,6 +20,7 @@ const App = () => {
         <MyStack.Screen 
         name="Home" 
         component={Home} 
+        options={{ headerShown: false }} 
         />
       </MyStack.Navigator>
     </NavigationContainer>
