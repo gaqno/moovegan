@@ -6,20 +6,20 @@ export default function StyledText(
   props: { 
     text?: any;
     type?: 'title' | 'subtitle';
-    marginHorizontal?: number ;
-    marginVertical?: number ;
+    marginLeft?: number;
+    number?: number;
     fontSize?: number ; 
     color?: any | undefined;
   }) {
       
-  const { text, type, fontSize, marginHorizontal, marginVertical, color } = props;
+  const { text, type, fontSize, marginLeft, color } = props;
   
   if (props.type === 'title') {
     let [fontsLoaded] = useFonts({
       Poppins_400Regular})
     return (
       <>
-        <Text style={[styles.title, {fontSize}, {marginHorizontal}, {color}, {marginVertical}]}>{text}</Text> 
+        <Text style={[styles.title, {fontSize}, {color}, {marginLeft}]}>{text}</Text> 
       </>
     )
   }
@@ -29,7 +29,7 @@ export default function StyledText(
     })
     return (
       <>
-        <Text style={[styles.subtitle, {fontSize}, {marginHorizontal}, {color}, {marginVertical}]}>{text}</Text> 
+        <Text style={[styles.subtitle, {fontSize}, {color}, {marginLeft}]}>{text}</Text> 
       </>
     )
   }
