@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 import React, { Fragment, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 import StyledText from './StyledText';
 import Badge from './Badge';
+=======
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
+import { Badge } from "@rneui/themed";
+import StyledText from './StyledText';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+>>>>>>> 2ffc225289957cbbdc754851934735c05b86c514
 
 export default function Header(
   props: {

@@ -8,7 +8,6 @@ export default function Dashboard() {
     return (
       <View style={styles.container}>
         <StyledText text='Categorias' marginLeft={15} fontSize={14} type='subtitle'/>
-        
       </View>
     )
 }
