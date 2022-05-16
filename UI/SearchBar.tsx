@@ -1,17 +1,21 @@
-import React from 'react';
-import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import StyledText from './StyledText';
-
+import { Searchbar } from '';
 export default function SearchBar(
-  text: string,
-  search: string,
-  data: any
+  text: any,
+  search?: string,
+  data?: any
 ) {
+  let [searchData, setSearchData] = useState([]);
   return (
     <View>
       <MaterialIcons name="search" size={24} color='#A4A4A4' />
+      <SearchBar
+        placeholder="Type Here..."
+        onChangeText={search}
+        value={search}
+      />    
     </View>
   )
 }

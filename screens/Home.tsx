@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../UI/Header';
 import Dashboard from '../UI/Dashboard';
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation }: any) => {
 
   return (
     <>
