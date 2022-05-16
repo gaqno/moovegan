@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Image, StyleSheet, Text, View, TextInput } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import AppLoading from 'expo-app-loading';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons'; 
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import AppLoading from 'expo-app-loading';
+
 import StyledButton from '../UI/StyledButton';
 import StyledText from '../UI/StyledText';
-import { StatusBar } from 'expo-status-bar';
 
-const Login = ( { navigation }: any ) => {
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import type { RootStackParamList } from '../navigation/types';
+
+type loginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
+const Login = () => {
+  const navigation = useNavigation<loginScreenProp>();
+
   const logoPosition = useSharedValue(0);
   const loginPosition = useSharedValue(400)
   const logoStyle = useAnimatedStyle(() => {
@@ -33,7 +41,6 @@ const Login = ( { navigation }: any ) => {
 
     return (
       <View style={styles.container}>
-      <StatusBar hidden={false} />
         <Animated.Image source={require('../assets/logo.png')} style={[styles.logo, logoStyle]} />
         <Animated.View style={[styles.formSection, loginStyle]}>
           <View style={styles.form}>
@@ -52,7 +59,7 @@ const Login = ( { navigation }: any ) => {
               <Text style={styles.forgetPassword}> 
                  Esqueceu a senha? 
               </Text>
-              <StyledButton title="ENTRAR" onPress={() => {console.log('teste'); navigation.navigate('Home')}} backgroundColor="#075E47" />
+              <StyledButton title="ENTRAR" backgroundColor="#075E47" onPress={() => navigation.navigate('Home')} />
               <StyledText label='ou continue com:' bold={false} style={{fontSize: 15, marginLeft: 100}}/>
                 <View style={{ flexDirection: 'row', marginBottom: 10, justifyContent: 'space-evenly', marginHorizontal: 100}}>
                   <FontAwesome name="facebook" color='#075E47' size={25} />

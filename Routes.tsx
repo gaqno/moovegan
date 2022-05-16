@@ -1,13 +1,12 @@
 import React from "react";
+import {createStackNavigator} from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { RootStackParamList } from "./navigation/types";
 import Login from "./screens/Login";
-import Home from "./screens/Home";
+import HomeScreen from "./screens/HomeScreen";
 
-
-// create a "stack"
-const MyStack = createNativeStackNavigator();
-const Routes = () => {
+const MyStack = createStackNavigator<RootStackParamList>();
+const Router = () => {
   return (
     <NavigationContainer>
       <MyStack.Navigator>
@@ -18,7 +17,7 @@ const Routes = () => {
         />
         <MyStack.Screen 
         name="Home" 
-        component={Home} 
+        component={HomeScreen} 
         options={{ headerShown: false }} 
         />
       </MyStack.Navigator>
@@ -26,4 +25,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default Router;
