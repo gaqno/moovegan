@@ -9,13 +9,7 @@ import AppLoading from 'expo-app-loading';
 import StyledButton from '../UI/StyledButton';
 import StyledText from '../UI/StyledText';
 
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import type { RootStackParamList } from '../navigation/types';
-
-type loginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
-const Login = () => {
-  const navigation = useNavigation<loginScreenProp>();
+const Login = ({ navigation }) => {
 
   const logoPosition = useSharedValue(0);
   const loginPosition = useSharedValue(400)
@@ -44,7 +38,7 @@ const Login = () => {
         <Animated.Image source={require('../assets/logo.png')} style={[styles.logo, logoStyle]} />
         <Animated.View style={[styles.formSection, loginStyle]}>
           <View style={styles.form}>
-              <StyledText label='Vamos começar!' bold={true} style={{fontSize: 24}} />
+              <StyledText label='Vamos começar!' bold style={{fontSize: 24}} />
               <StyledText label='Faça seu login para ter acesso ao conteúdo.' style={{fontSize: 12}}/>
               <TextInput 
               style={styles.input}
@@ -60,14 +54,14 @@ const Login = () => {
                  Esqueceu a senha? 
               </Text>
               <StyledButton title="ENTRAR" backgroundColor="#075E47" onPress={() => navigation.navigate('Home')} />
-              <StyledText label='ou continue com:' bold={false} style={{fontSize: 15, marginLeft: 100}}/>
+              <StyledText label='ou continue com:' style={{fontSize: 15, marginLeft: 100}}/>
                 <View style={{ flexDirection: 'row', marginBottom: 10, justifyContent: 'space-evenly', marginHorizontal: 100}}>
                   <FontAwesome name="facebook" color='#075E47' size={25} />
                   <FontAwesome name="google" color='#075E47' size={25} />
                 </View>
                 <View style={{flexDirection: 'row'}}>
                   <StyledText label='Não tem uma conta?' style={{fontSize: 10, marginLeft: 50}}/>
-                  <StyledText label='Registre-se agora'  style={{fontSize: 10, marginLeft: 10, color: '#EA7B7B'}}/>
+                  <StyledText label='Registre-se agora'  bold style={{fontSize: 10, marginLeft: 10, color: '#EA7B7B'}}/>
                 </View>
             </View>
         </Animated.View>
@@ -129,3 +123,4 @@ const styles = StyleSheet.create({
 })
 
 export default Login;
+

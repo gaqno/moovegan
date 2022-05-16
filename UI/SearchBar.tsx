@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Searchbar } from '';
 export default function SearchBar(
   text: any,
   search?: string,
