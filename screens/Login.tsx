@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Image, StyleSheet, Text, View, TextInput } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import AppLoading from 'expo-app-loading';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons'; 
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import AppLoading from 'expo-app-loading';
+
 import StyledButton from '../UI/StyledButton';
 import StyledText from '../UI/StyledText';
-import { StatusBar } from 'expo-status-bar';
 
-const Login = ( { navigation } ) => {
+const Login = ({ navigation }) => {
+
   const logoPosition = useSharedValue(0);
   const loginPosition = useSharedValue(400)
   const logoStyle = useAnimatedStyle(() => {
@@ -33,12 +35,11 @@ const Login = ( { navigation } ) => {
 
     return (
       <View style={styles.container}>
-      <StatusBar hidden={false} />
         <Animated.Image source={require('../assets/logo.png')} style={[styles.logo, logoStyle]} />
         <Animated.View style={[styles.formSection, loginStyle]}>
           <View style={styles.form}>
-              <StyledText text='Vamos começar!' type='title' fontSize={24} marginLeft={0}/>
-              <StyledText text='Faça seu login para ter acesso ao conteúdo.' type='subtitle' fontSize={12}/>
+              <StyledText label='Vamos começar!' bold style={{fontSize: 24}} />
+              <StyledText label='Faça seu login para ter acesso ao conteúdo.' style={{fontSize: 12}}/>
               <TextInput 
               style={styles.input}
               // onChangeText={}
@@ -52,15 +53,15 @@ const Login = ( { navigation } ) => {
               <Text style={styles.forgetPassword}> 
                  Esqueceu a senha? 
               </Text>
-              <StyledButton title="ENTRAR" onPress={() => navigation.navigate('Home')} backgroundColor="#075E47" />
-              <StyledText text='ou continue com:' type='subtitle' fontSize={15} marginLeft={110}/>
+              <StyledButton title="ENTRAR" backgroundColor="#075E47" onPress={() => navigation.navigate('Home')} />
+              <StyledText label='ou continue com:' style={{fontSize: 15, marginLeft: 100}}/>
                 <View style={{ flexDirection: 'row', marginBottom: 10, justifyContent: 'space-evenly', marginHorizontal: 100}}>
                   <FontAwesome name="facebook" color='#075E47' size={25} />
                   <FontAwesome name="google" color='#075E47' size={25} />
                 </View>
                 <View style={{flexDirection: 'row'}}>
-                  <StyledText text='Não tem uma conta?' type='subtitle' fontSize={10} marginLeft={80}/>
-                  <StyledText text='Registre-se agora' type='subtitle' fontSize={10} marginLeft={5} color='#EA7B7B'/>
+                  <StyledText label='Não tem uma conta?' style={{fontSize: 10, marginLeft: 50}}/>
+                  <StyledText label='Registre-se agora'  bold style={{fontSize: 10, marginLeft: 10, color: '#EA7B7B'}}/>
                 </View>
             </View>
         </Animated.View>
@@ -80,8 +81,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopEndRadius: 30,
     borderTopLeftRadius: 30,
-    width: 390,
-    height: 450,
+    width: '100%',
+    height: '60%',
     marginBottom: -300,
     
   },
@@ -122,3 +123,4 @@ const styles = StyleSheet.create({
 })
 
 export default Login;
+

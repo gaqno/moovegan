@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
+import { StyleSheet, View } from 'react-native';
 import StyledText from './StyledText';
 
 export default function Dashboard() {
     return (
       <View style={styles.container}>
-        <StyledText text='Categorias' marginHorizontal={10} marginVertical={15} fontSize={14} type='subtitle'/>
+        <StyledText label='Categorias' style={{marginLeft: 15, fontSize: 14}}/>
       </View>
     )
 }

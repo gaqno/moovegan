@@ -1,39 +1,24 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity, Alert, View } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, Alert, View, StyleProp } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 
 export default function StyledText( 
   props: { 
-    text?: any;
-    type?: 'title' | 'subtitle';
-    marginHorizontal?: number ;
-    marginVertical?: number ;
-    fontSize?: number ; 
-    color?: any | undefined;
+    label?: any;
+    bold?: boolean;
+    style: StyleProp<any>;
   }) {
-      
-  const { text, type, fontSize, marginHorizontal, marginVertical, color } = props;
-  
-  if (props.type === 'title') {
+    const { label, bold, style } = props;
     let [fontsLoaded] = useFonts({
-      Poppins_400Regular})
-    return (
-      <>
-        <Text style={[styles.title, {fontSize}, {marginHorizontal}, {color}, {marginVertical}]}>{text}</Text> 
-      </>
-    )
+      Poppins_400Regular, Poppins_700Bold})
+     return (
+     <>
+     { props.bold == true
+     ? <Text style={[styles.title, style]}>{label}</Text> 
+     : <Text style={[styles.subtitle, style]}>{label}</Text> }
+     </>
+   )
   }
-  if (props.type === 'subtitle') {
-    let [fontsLoaded] = useFonts({
-      Poppins_700Bold
-    })
-    return (
-      <>
-        <Text style={[styles.subtitle, {fontSize}, {marginHorizontal}, {color}, {marginVertical}]}>{text}</Text> 
-      </>
-    )
-  }
-}
 
 const styles = StyleSheet.create({
 title: {
