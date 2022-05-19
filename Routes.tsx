@@ -9,7 +9,7 @@ const MyStack = createStackNavigator<RootStackParamList>();
 const Router = () => {
   return (
     <NavigationContainer>
-      <MyStack.Navigator>
+      <MyStack.Navigator initialRouteName="Login">
         <MyStack.Screen 
         name="Login" 
         component={Login} 

@@ -4,18 +4,18 @@ import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-font
 
 export default function StyledText( 
   props: { 
-    label?: any;
+    text?: string;
     bold?: boolean;
     style: StyleProp<any>;
   }) {
-    const { label, bold, style } = props;
+    const { text, bold, style } = props;
     let [fontsLoaded] = useFonts({
       Poppins_400Regular, Poppins_700Bold})
      return (
      <>
      { props.bold == true
-     ? <Text style={[styles.title, style]}>{label}</Text> 
-     : <Text style={[styles.subtitle, style]}>{label}</Text> }
+     ? <Text style={[styles.title, style]}>{text}</Text> 
+     : <Text style={[styles.subtitle, style]}>{text}</Text> }
      </>
    )
   }

@@ -38,10 +38,10 @@ export default function Header(
   }
 
   return (
-    <Fragment>
+    <>
       <TouchableOpacity style={styles.header}>
         <MaterialIcons name="menu" size={28} color='#585858' />
-        <StyledText label={title} style={{fontSize: 16, marginLeft: 50, color: 'black'}} />
+        <StyledText text={title} style={{fontSize: 16, marginLeft: 50, color: 'black'}} />
         <View style={{height: 50, flexDirection: 'row', width: 80, justifyContent: 'space-between'}}>
           <MaterialIcons name="notifications-none" size={24} color='#A4A4A4' />
           <Badge valor={5} size={12} left={10} backgroundColor='#057659'/>
