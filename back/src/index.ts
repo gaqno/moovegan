@@ -7,8 +7,8 @@ const app = express();
 app.use(express.json());
 
 app.get("/users", async (req, res) => {
-  // const result = TODO
-  // res.json(result)
+  const users = await prisma.user.findMany();
+  res.json(users);
 });
 
 app.post(`/signup`, async (req, res) => {
@@ -30,9 +30,17 @@ app.post(`/post`, async (req, res) => {
 app.put("/post/:id/views", async (req, res) => {
   const { id } = req.params;
 
-  // const result = TODO
-
-  // res.json(result)
+  const result = await prisma.post.update({
+    where: {
+      id: Number(id)
+    },
+    data: {
+      viewCount: {
+        increment: 1
+      }
+    }
+  })
+  res.json(result)
 });
 
 app.put("/publish/:id", async (req, res) => {
