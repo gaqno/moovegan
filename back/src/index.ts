@@ -1,80 +1,10 @@
-import { PrismaClient } from "@prisma/client";
-import express from "express";
+import express from 'express'
+import authRouter from './api/auth/auth.routes'
 
-const prisma = new PrismaClient();
-const app = express();
+const app = express()
+app.use(express.json())
 
-app.use(express.json());
-
-app.get("/users", async (req, res) => {
-  const users = await prisma.user.findMany();
-  res.json(users);
-});
-
-app.post(`/signup`, async (req, res) => {
-  const { name, email } = req.body;
-
-  // const result = TODO
-
-  // res.json(result)
-});
-
-app.post(`/post`, async (req, res) => {
-  const { title, content, authorEmail } = req.body;
-
-  // const result = TODO
-
-  // res.json(result)
-});
-
-app.put("/post/:id/views", async (req, res) => {
-  const { id } = req.params;
-
-  const result = await prisma.post.update({
-    where: {
-      id: Number(id)
-    },
-    data: {
-      viewCount: {
-        increment: 1
-      }
-    }
-  })
-  res.json(result)
-});
-
-app.put("/publish/:id", async (req, res) => {
-  const { id } = req.params;
-
-  // const result = TODO
-
-  // res.json(result)
-});
-
-app.get("/user/:id/drafts", async (req, res) => {
-  const { id } = req.params;
-
-  // const result = TODO
-
-  // res.json(result)
-});
-
-app.get(`/post/:id`, async (req, res) => {
-  const { id } = req.params;
-
-  // const result = TODO
-
-  // res.json(result)
-});
-
-app.get("/feed", async (req, res) => {
-  const { searchString, skip, take } = req.query;
-
-  // const result = TODO
-
-  // res.json(result)
-});
+app.use('/auth', authRouter);
 
 app.listen(3000, () =>
-  console.log(`🚀 Server ready at: http://localhost:3000`)
-);
+console.log(`🚀 MooVegan ready at: http://localhost:3000 🐄`))
