@@ -1,6 +1,8 @@
 ## Bem vindo a MooVegan! 🐄
 
-* UX by Julia Sousa shorturl.at/kvyM2
+PI - Faculdade das Americas
+
+* ux by julia sousa shorturl.at/kvyM2
 * code by gaqno 
 * expo project based
 * testhttp extension for test requests.
