@@ -20,8 +20,8 @@ let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    async getUsers() {
-        return this.userService.getUsers();
+    async getAllUsers() {
+        return this.userService.getAllUsers();
     }
     async createUser(input) {
         const isValidInput = user_1.yupUserCreate.isValidSync(input);

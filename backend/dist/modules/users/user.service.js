@@ -32,7 +32,6 @@ let UserService = class UserService {
             throw new common_1.ConflictException('Email já cadastrado.');
         try {
             return this.userRepository.create(Object.assign({}, input));
-            input.password = undefined;
         }
         catch (_a) {
             throw new common_1.InternalServerErrorException();
