@@ -1,66 +1,167 @@
 import React from 'react';
-import { Avatar, Icon, Text, View } from 'native-base';
-import { DrawerItem, DrawerNavigationProp } from '@react-navigation/drawer';
-import { FontAwesome } from "@expo/vector-icons";
-import { RootDrawerParamList } from '../navigation/types';
-import { useNavigation } from '@react-navigation/native';
+import {Avatar, Icon, Text, View} from 'native-base';
+import {DrawerItem, DrawerNavigationProp} from '@react-navigation/drawer';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
+import {RootDrawerParamList} from '../navigation/types';
 
-type HomeNavigationProp = DrawerNavigationProp<RootDrawerParamList, 'Home'>
-
-const DrawerMenuContent = (navigation, routes) => {
-    return (
-      <View style={{ flex: 1 }}>
-        <View alignSelf='center' mt={70}>
-          <Avatar
-            source={{ uri: "https://pbs.twimg.com/profile_images/13699217875684229size/hoyvrUpc_400x400.jpg" }}
-          > SS
-          </Avatar>
-        </View>
-        <Text alignSelf='center' my={5}> Fernandinha </Text>
+type HomeNavigationProp = DrawerNavigationProp<RootDrawerParamList, 'Home'>;
+const DrawerMenuContent = ({navigation, routes}: any) => {
+  return (
+    <View>
+      <View mt={10}>
+        <Text my={5} bold>
+          String
+        </Text>
+        <Avatar
+          size={20}
+          source={{
+            uri: 'https://static.vecteezy.com/system/resources/previews/001/993/889/non_2x/beautiful-latin-woman-avatar-character-icon-free-vector.jpg',
+          }}
+        />
+        {/* {points.map((i) => (
+          <View flexDirection={'row'} w={'100%'}>
+            <Icon
+              as={MaterialCommunityIcons}
+              name="star"
+              size="20px"
+              color="#057659"
+              key={data?.star.id}
+            />
+          </View>
+        ))} */}
+      </View>
+      <>
         <DrawerItem
           label="Pagamentos"
-          icon={() => (
-            <Icon as={FontAwesome} name="credit-card" color={'dark.200'} size={15} />
-          )}
+          icon={() => {
+            return (
+              <>
+                <Icon
+                  as={MaterialCommunityIcons}
+                  name="credit-card-outline"
+                  color={'dark.200'}
+                  size="25px"
+                />
+              </>
+            );
+          }}
           onPress={() => navigation.navigator('Home')}
         />
         <DrawerItem
           label="Favoritos"
           icon={() => (
-            <Icon as={FontAwesome} name="heart-o" color={'dark.200'} size={15} />
+            <Icon
+              as={MaterialCommunityIcons}
+              name="cards-heart-outline"
+              color={'dark.200'}
+              size="25px"
+            />
           )}
           onPress={() => navigation.navigator('Home')}
         />
         <DrawerItem
           label="Cupons"
           icon={() => (
-            <Icon as={FontAwesome} name="ticket" color={'dark.200'} size={15} />
+            <Icon
+              as={MaterialCommunityIcons}
+              name="ticket-outline"
+              color={'dark.200'}
+              size="25px"
+            />
           )}
           onPress={() => navigation.navigator('Home')}
         />
         <DrawerItem
           label="Notificações"
           icon={() => (
-            <Icon as={FontAwesome} name="bell-o" color={'dark.200'} size={15} />
+            <Icon
+              as={MaterialCommunityIcons}
+              name="bell-outline"
+              color={'dark.200'}
+              size="25px"
+            />
           )}
           onPress={() => navigation.navigator('Home')}
         />
         <DrawerItem
           label="Endereços"
           icon={() => (
-            <Icon as={FontAwesome} name="bell-o" color={'dark.200'} size={15} />
+            <Icon
+              as={MaterialCommunityIcons}
+              name="map-marker-outline"
+              color={'dark.200'}
+              size="25px"
+            />
           )}
           onPress={() => navigation.navigator('Home')}
         />
         <DrawerItem
           label="Dados"
           icon={() => (
-            <Icon as={FontAwesome} name="file-o" color={'dark.200'} size={15} />
+            <Icon
+              as={MaterialCommunityIcons}
+              name="file-outline"
+              color={'dark.200'}
+              size="25px"
+            />
+          )}
+          onPress={() => navigation.navigator('Home')}
+        />
+      </>
+      <View mt="25px">
+        <DrawerItem
+          label="Ajuda"
+          icon={() => (
+            <Icon
+              as={MaterialCommunityIcons}
+              name="help-circle-outline"
+              color={'dark.200'}
+              size="25px"
+            />
+          )}
+          onPress={() => navigation.navigator('Home')}
+        />
+        <DrawerItem
+          label="Configurações"
+          icon={() => (
+            <Icon
+              as={MaterialCommunityIcons}
+              name="cog-outline"
+              color={'dark.200'}
+              size="25px"
+            />
+          )}
+          onPress={() => navigation.navigator('Home')}
+        />
+        <DrawerItem
+          label="Segurança"
+          icon={() => (
+            <Icon
+              as={MaterialCommunityIcons}
+              name="shield-check-outline"
+              color={'dark.200'}
+              size="25px"
+            />
           )}
           onPress={() => navigation.navigator('Home')}
         />
       </View>
-    )
-  }
+      <View mt="25px">
+        <DrawerItem
+          label="Sair"
+          icon={() => (
+            <Icon
+              as={MaterialCommunityIcons}
+              name="logout"
+              color={'dark.200'}
+              size="25px"
+            />
+          )}
+          onPress={() => navigation.navigator('Home')}
+        />
+      </View>
+    </View>
+  );
+};
 
 export default DrawerMenuContent;
