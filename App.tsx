@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   createDrawerNavigator,
   DrawerNavigationProp,
 } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import {RootDrawerParamList, RootStackParamList} from './navigation/types';
+import {RootDrawerParamList, RootStackParamList} from './src/navigation/types';
 import {extendTheme, NativeBaseProvider, useTheme} from 'native-base';
 import {
   useFonts,
@@ -15,12 +15,11 @@ import {
   createStackNavigator,
   StackNavigationProp,
 } from '@react-navigation/stack';
-import AppLoading from 'expo-app-loading';
-import Login from './screens/Login';
-import HomeScreen from './screens/HomeScreen';
-import DrawerMenuContent from './components/DrawerMenuContent';
-import {ApolloProvider} from '@apollo/client';
-import {client} from './lib/apollo';
+import Login from './src/screens/Login';
+import HomeScreen from './src/screens/HomeScreen';
+import DrawerMenuContent from './src/components/DrawerMenuContent';
+import {ApiProvider} from '@reduxjs/toolkit/query/react';
+import {userApi} from '~/features/users/usersApiSlice';
 
 type loginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 type homeScreenProp = DrawerNavigationProp<RootDrawerParamList, 'Home'>;
@@ -30,7 +29,7 @@ const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
 const MainStack = () => {
   return (
-    <ApolloProvider client={client}>
+    <ApiProvider api={userApi}>
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator>
@@ -47,7 +46,7 @@ const MainStack = () => {
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
-    </ApolloProvider>
+    </ApiProvider>
   );
 };
 const MainDrawer = () => {
