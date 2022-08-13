@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Actionsheet,
   Box,
@@ -11,17 +11,31 @@ import {
   Text,
   View,
 } from 'native-base';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
-import {userApi} from '~/features/users/usersApiSlice';
-import {Value} from 'react-native-reanimated';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import LoginService from '../services/auth';
+import { useAuth } from '../context/authProvider';
+import { useEffect } from 'react';
 
-export const LoginPopup = (props) => {
-  const {isOpen, onClose, navigation} = props;
-  const [login, setLoginForm] = useState({
-    email: '',
-    password: '',
+type LoginPopupProps = {
+  isOpen: any;
+  onClose: any;
+  navigation: any;
+};
+export const LoginPopup = (props: LoginPopupProps) => {
+  const { isOpen, onClose, navigation } = props;
+  const { state, setState } = useAuth();
+  const [form, setForm] = useState({
+    email: state.email,
+    password: state.password,
+    isAuth: state.isAuth,
   });
-  const [postLogin] = userApi.usePostLoginMutation();
+
+  const handleLogin = async () => {
+    await LoginService.postLogin({ ...form }).then((res) =>
+      setState({ ...res, isAuth: true })
+    );
+    state.isAuth ? navigation.navigate('Home') : null;
+  };
   return (
     <>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
@@ -37,25 +51,25 @@ export const LoginPopup = (props) => {
                   <Input
                     placeholder="Email ou usuário"
                     type="email"
-                    value={login.email}
                     p={2}
                     mb={3}
+                    onChangeText={(e) => setForm({ ...form, email: e })}
                   />
-                  <Input placeholder="Senha" type="password" p={2} />
+                  <Input
+                    placeholder="Senha"
+                    type="password"
+                    p={2}
+                    onChangeText={(e) => setForm({ ...form, password: e })}
+                  />
                   <FormControl.HelperText pb={3} left="70%" color="primary.100">
                     Esqueceu a senha?
                   </FormControl.HelperText>
-                  {/* TODO:
-                        <FormControl.ErrorMessage>Something is wrong.</FormControl.ErrorMessage>
-                        */}
+
+                  <FormControl.ErrorMessage>Something is wrong.</FormControl.ErrorMessage>
                 </Stack>
               </FormControl>
             </View>
-            <Button
-              bg="primary.200"
-              onPress={() => {
-                navigation.navigate('Main');
-              }}>
+            <Button bg="primary.200" onPress={handleLogin}>
               <Text bold color="#FFF">
                 ENTRAR
               </Text>
@@ -66,11 +80,7 @@ export const LoginPopup = (props) => {
             <Box flexDirection="row" justifyContent="space-between" mx={125}>
               <IconButton
                 icon={
-                  <Icon
-                    as={MaterialCommunityIcons}
-                    name="google"
-                    color="primary.200"
-                  />
+                  <Icon as={MaterialCommunityIcons} name="google" color="primary.200" />
                 }
                 onPress={() => {
                   console.log('hello');
@@ -78,11 +88,7 @@ export const LoginPopup = (props) => {
               />
               <IconButton
                 icon={
-                  <Icon
-                    as={MaterialCommunityIcons}
-                    name="facebook"
-                    color="primary.200"
-                  />
+                  <Icon as={MaterialCommunityIcons} name="facebook" color="primary.200" />
                 }
                 onPress={() => {
                   console.log('hello');

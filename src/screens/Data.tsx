@@ -2,7 +2,7 @@ import React from 'react';
 import {Center, Icon, Text} from 'native-base';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
-const HomeScreen = () => {
+const Data = () => {
   return (
     <Center mt={50}>
       <Text>Olá!</Text>
@@ -11,4 +11,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default Data;
