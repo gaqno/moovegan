@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Icon, View } from 'native-base';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DrawerNavigation from './DrawerNavigation';
-import Login from '../screens/Login';
 import HomeScreen from '../screens/HomeScreen';
 import Payments from '../screens/Payments';
 import Favorites from '../screens/Favorites';
@@ -15,6 +14,7 @@ import Data from '../screens/Data';
 import Adress from '../screens/Adress';
 import Help from '../screens/Help';
 import Configurations from '../screens/Configurations';
+import { Login } from '../screens/Login';
 
 const Stack = createStackNavigator();
 export default () => (
@@ -122,8 +122,6 @@ export function TicketsStack({ navigation }: any) {
           ),
         }}
       />
-
-      <Stack.Screen name="SignUp" component={Login} />
     </Stack.Navigator>
   );
 }

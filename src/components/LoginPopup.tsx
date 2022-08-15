@@ -22,20 +22,22 @@ type LoginPopupProps = {
   navigation: any;
 };
 export const LoginPopup = (props: LoginPopupProps) => {
-  const { isOpen, onClose, navigation } = props;
+  const { navigation, isOpen, onClose } = props;
   const { state, setState } = useAuth();
   const [form, setForm] = useState({
     email: state.email,
     password: state.password,
-    isAuth: state.isAuth,
   });
 
   const handleLogin = async () => {
     await LoginService.postLogin({ ...form }).then((res) =>
       setState({ ...res, isAuth: true })
     );
-    state.isAuth ? navigation.navigate('Home') : null;
+    onClose();
   };
+
+  state.isAuth ? navigation.navigate('Home') : console.warn('Senha ou usuário errado');
+
   return (
     <>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
@@ -51,6 +53,7 @@ export const LoginPopup = (props: LoginPopupProps) => {
                   <Input
                     placeholder="Email ou usuário"
                     type="email"
+                    id="email"
                     p={2}
                     mb={3}
                     onChangeText={(e) => setForm({ ...form, email: e })}
@@ -58,6 +61,7 @@ export const LoginPopup = (props: LoginPopupProps) => {
                   <Input
                     placeholder="Senha"
                     type="password"
+                    id="password"
                     p={2}
                     onChangeText={(e) => setForm({ ...form, password: e })}
                   />
@@ -65,7 +69,7 @@ export const LoginPopup = (props: LoginPopupProps) => {
                     Esqueceu a senha?
                   </FormControl.HelperText>
 
-                  <FormControl.ErrorMessage>Something is wrong.</FormControl.ErrorMessage>
+                  {/* <FormControl.ErrorMessage>Something is wrong.</FormControl.ErrorMessage> */}
                 </Stack>
               </FormControl>
             </View>

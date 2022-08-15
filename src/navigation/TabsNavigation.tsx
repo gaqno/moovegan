@@ -17,19 +17,18 @@ import {
 
 const Tab = createBottomTabNavigator();
 
-const TabsNavigator = () => {
+const TabsNavigator = (props: any) => {
   return (
     <Tab.Navigator initialRouteName="HomeTab" screenOptions={{ headerShown: false }}>
       <Tab.Screen
-        name="PaymentsTab"
+        name="HomeTab"
         component={PaymentStack}
         options={{
-          tabBarLabel: 'Imóveis',
+          tabBarLabel: `Olá, ${props}`,
           tabBarIcon: ({ focused }) => (
             <Icon
               as={MaterialCommunityIcons}
-              name="home"
-              color={focused ? 'red.100' : 'gray'}
+              name={focused ? 'home' : 'home-outline'}
               size="25px"
             />
           ),
@@ -39,12 +38,11 @@ const TabsNavigator = () => {
         name="Favorites"
         component={FavoritesStack}
         options={{
-          tabBarLabel: 'Clientes',
+          tabBarLabel: 'Favoritos',
           tabBarIcon: ({ focused }) => (
             <Icon
               as={MaterialCommunityIcons}
-              name="account-multiple"
-              color={focused ? 'red.100' : 'gray'}
+              name={focused ? 'cards-heart' : 'cards-heart-outline'}
               size="25px"
             />
           ),
@@ -58,8 +56,7 @@ const TabsNavigator = () => {
           tabBarIcon: ({ focused }) => (
             <Icon
               as={MaterialCommunityIcons}
-              name="home-roof"
-              color={focused ? 'red.100' : 'gray'}
+              name={focused ? 'ticket' : 'ticket-outline'}
               size="25px"
             />
           ),
@@ -69,41 +66,22 @@ const TabsNavigator = () => {
         name="NotificationsTab"
         component={NotificationsStack}
         options={{
-          tabBarLabel: 'Serviços',
+          tabBarLabel: 'Notificações',
           tabBarIcon: ({ focused }) => (
             <Icon
               as={MaterialCommunityIcons}
-              name="briefcase"
-              color={focused ? 'red.100' : 'gray'}
+              name={focused ? 'bell' : 'bell-outline'}
               size="25px"
             />
           ),
         }}
       />
-      <Tab.Screen
-        name="NotificationsTab"
-        component={NotificationsStack}
-        options={{
-          tabBarLabel: 'Alertas',
-          tabBarIcon: ({ focused }) => (
-            <Icon
-              as={MaterialCommunityIcons}
-              name="bell-ring"
-              color={focused ? 'red.100' : 'gray'}
-              size="25px"
-            />
-          ),
-        }}
-      />
+
       <Tab.Group screenOptions={{ tabBarButton: () => null }}>
-        <Tab.Screen name="PaymentsTab" component={PaymentStack} />
         <Tab.Screen name="FavoritesTab" component={FavoritesStack} />
-        <Tab.Screen name="TicketsTab" component={TicketsStack} />
-        <Tab.Screen name="NotificationsTab" component={NotificationsStack} />
         <Tab.Screen name="AdressTab" component={AdressStack} />
         <Tab.Screen name="DataTab" component={DataStack} />
         <Tab.Screen name="HelpTab" component={HelpStack} />
-
         <Tab.Screen name="ConfigurationTab" component={ConfigurationStack} />
         <Tab.Screen name="SecurityTab" component={SecurityStack} />
         <Tab.Screen name="LogoutTab" component={LogoutStack} />

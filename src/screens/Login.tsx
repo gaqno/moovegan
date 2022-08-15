@@ -4,7 +4,7 @@ import { Center, useDisclose } from 'native-base';
 import { LandingPage } from '../components/LandingPage';
 import { LoginPopup } from '../components/LoginPopup';
 
-const Login = ({ navigation }: any) => {
+export const Login = ({ navigation }: any) => {
   const { onOpen, isOpen, onClose } = useDisclose();
   return (
     <Center flex={1} bg="primary.200">
@@ -13,18 +13,3 @@ const Login = ({ navigation }: any) => {
     </Center>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#075E47',
-  },
-  form: {
-    paddingTop: 50,
-    paddingHorizontal: 25,
-    justifyContent: 'center',
-  },
-});
-export default Login;

@@ -1,11 +1,12 @@
 import React from 'react';
-import {Avatar, Icon, Text, View} from 'native-base';
-import {DrawerItem, DrawerNavigationProp} from '@react-navigation/drawer';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
-import {RootDrawerParamList} from '../navigation/types';
+import { Avatar, Icon, Text, View } from 'native-base';
+import { DrawerItem } from '@react-navigation/drawer';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { RootDrawerParamList } from '../navigation/types';
 
-type HomeNavigationProp = DrawerNavigationProp<RootDrawerParamList, 'Home'>;
-const DrawerMenuContent = ({navigation, routes}: any) => {
+export const DrawerItems = ({ navigation, routes }: any) => {
+  const acessPage = (page: string) => navigation.navigate(page);
+
   return (
     <View>
       <View mt={10}>
@@ -45,7 +46,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               </>
             );
           }}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('PaymentsTab')}
         />
         <DrawerItem
           label="Favoritos"
@@ -57,7 +58,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('FavoritesTab')}
         />
         <DrawerItem
           label="Cupons"
@@ -69,7 +70,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('TicketsTab')}
         />
         <DrawerItem
           label="Notificações"
@@ -81,7 +82,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('NotificationsTab')}
         />
         <DrawerItem
           label="Endereços"
@@ -93,7 +94,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('AdressTab')}
         />
         <DrawerItem
           label="Dados"
@@ -105,7 +106,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('DataTab')}
         />
       </>
       <View mt="25px">
@@ -119,7 +120,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('HelpTab')}
         />
         <DrawerItem
           label="Configurações"
@@ -131,7 +132,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('ConfigurationTab')}
         />
         <DrawerItem
           label="Segurança"
@@ -143,7 +144,7 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('SecurityTab')}
         />
       </View>
       <View mt="25px">
@@ -157,11 +158,9 @@ const DrawerMenuContent = ({navigation, routes}: any) => {
               size="25px"
             />
           )}
-          onPress={() => navigation.navigator('Home')}
+          onPress={() => acessPage('LogoutTab')}
         />
       </View>
     </View>
   );
 };
-
-export default DrawerMenuContent;

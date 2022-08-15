@@ -9,7 +9,7 @@ class LoginService {
       .post(`/auth/login`, login)
       .then((res) => res.data)
       .catch((error) => {
-        throw new APIError(error.response.status, `API problems`);
+        return new APIError(error.response.status, `API problems`);
       });
   }
   static postRegister(dto: ILogin) {
@@ -18,7 +18,7 @@ class LoginService {
       .post(`/auth/login`, dto)
       .then((res) => res.data)
       .catch((error) => {
-        throw new APIError(error.response.status, `API problems`);
+        return new APIError(error.response.status, `API problems`);
       });
   }
 }
