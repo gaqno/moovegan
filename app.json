@@ -1,12 +1,14 @@
 {
   "expo": {
-    "name": "mvegan",
-    "slug": "mvegan",
+    "name": "moovegan",
+    "slug": "moovegan",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "jsEngine": "hermes",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

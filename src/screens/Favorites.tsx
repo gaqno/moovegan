@@ -1,14 +1,9 @@
-import React from 'react';
-import {Center, Icon, Text} from 'native-base';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import { Text, View } from 'react-native';
 
-const Favorites = () => {
+export const Favorites = () => {
   return (
-    <Center mt={50}>
-      <Text>Olá!</Text>
-      <Icon as={MaterialCommunityIcons} name="home" />
-    </Center>
+    <View>
+      <Text>Favorites</Text>
+    </View>
   );
 };
-
-export default Favorites;

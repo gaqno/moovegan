@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native';
 
-export const Payments = () => {
+export const Logout = () => {
   return (
     <View>
-      <Text>Payments</Text>
+      <Text>Logout</Text>
     </View>
   );
 };

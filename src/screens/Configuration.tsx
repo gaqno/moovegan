@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-export const Security = () => {
+export const Configuration = () => {
   return (
     <View>
-      <Text>Security</Text>
+      <Text>Configuration</Text>
     </View>
   );
 };

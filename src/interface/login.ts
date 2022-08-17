@@ -1,21 +1,18 @@
-export interface ILogin {
-  email: string;
-  password: string;
+import { AxiosResponse } from 'axios';
+import { IProfile } from './profile';
+
+export interface a {
+  username?: string;
+  password?: string;
+  request?: AxiosResponse;
+  profile?: IProfile;
 }
-export interface LoginResponse {
-  id: number;
-  dateTime: number;
-  isLaunchOnly: boolean;
-  worksWithPrepared: boolean;
-  worksWithLaunch: boolean;
-  token: string;
-  isConcierge: false;
-  lastIsOnline: true;
-  avatar: string;
-  name: string;
-  email: string;
-  androidInformations: undefined;
-  ranking: number;
-  isValidated: boolean;
-  creci: undefined;
+export interface ILogin {
+  username?: string;
+  password?: string;
+}
+
+export interface LoginContextData {
+  actionsheet: boolean;
+  user: ILogin
 }

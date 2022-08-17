@@ -1,14 +1,9 @@
-import React from 'react';
-import {Center, Icon, Text} from 'native-base';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import { Text, View } from 'react-native';
 
-const Data = () => {
+export const Data = () => {
   return (
-    <Center mt={50}>
-      <Text>Olá!</Text>
-      <Icon as={MaterialCommunityIcons} name="home" />
-    </Center>
+    <View>
+      <Text>Data</Text>
+    </View>
   );
 };
-
-export default Data;
